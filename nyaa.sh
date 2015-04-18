@@ -10,7 +10,7 @@ function log_message() {
 cd ${HOME}/anime-fetch
 
 (
-	flock -n 9
+	flock -n 9 || exit 1
 	exec 1>>nyaa.log 2>&1
 	if [ -f 'flags/nyaa.stop' ]; then
 		exit 0
@@ -20,10 +20,10 @@ cd ${HOME}/anime-fetch
 	./nyaa.py
 	err=$?
 	log_message finished with status $err
-	if [ $err -ne 0 ]; then
-		touch flags/nyaa.stop
-		tail -n 10 nyaa.log
-	fi
+	exit $err
 ) 9>flags/nyaa.lck
 
-exit $err
+if [ $? -ne 0 ]; then
+	touch flags/nyaa.stop
+	tail -n 10 nyaa.log
+fi
