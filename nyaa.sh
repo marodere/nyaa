@@ -10,7 +10,7 @@ function log_message() {
 cd ${HOME}/anime-fetch
 
 (
-	flock -n 9 || exit 1
+	flock -n 9 || exit 0
 	exec 1>>nyaa.log 2>&1
 	if [ -f 'flags/nyaa.stop' ]; then
 		exit 0
