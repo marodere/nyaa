@@ -4,7 +4,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/opt/bin"
 export LC_ALL="ru_RU.UTF-8"
 
 function log_message() {
-	printf "%s > %s\n" "$(date +%Y%m%d-%H:%M:%S)" "$*"
+	printf "%s > %s\n" "$(date '+%Y-%m-%d %H:%M:%S %z')" "$*"
 }
 
 cd ${HOME}/anime-fetch
