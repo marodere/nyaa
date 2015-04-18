@@ -1,0 +1,28 @@
+{
+    "transmission": {
+        "api": "127.0.0.1:9091", 
+        "password": "123", 
+        "user": "bittorrent", 
+        "base_download_path": "/var/lib/transmission/downloads/Anime"
+    }, 
+    "series": [
+        {
+            "title": "Gintama", 
+            "fansub_group": "HorribleSubs", 
+            "start_tid": 679186
+        }
+    ], 
+    "recipients": [
+        "example@example.org" 
+    ], 
+    "fansub_groups": {
+        "default": {
+            "search_pattern": "[%s] %s", 
+            "regex_pattern": "^\\[%s\\].*\\.mkv$"
+        }, 
+        "HorribleSubs": {
+            "search_pattern": "[%s] %s [1080p].mkv", 
+            "regex_pattern": "^\\[%s\\].*\\[1080p\\]\\.mkv$"
+        }
+    }
+}
